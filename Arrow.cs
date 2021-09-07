@@ -7,12 +7,6 @@ public class Arrow : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] ParticleSystem effect;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +15,7 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Criar flecha e destruir na colisão
         Instantiate(effect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
