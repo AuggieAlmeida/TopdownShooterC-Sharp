@@ -26,19 +26,22 @@ public class BowController : MonoBehaviour
 
     void Aim() 
     {
-    
+        // Pegar posição do mouse e vetorizar com a posição do personagem
         Vector3 mousePos = Input.mousePosition;
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
         Vector2 offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
-
+        
+        // Rodar sprite de acordo com posição do mouse
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         sprite.flipY = (mousePos.x < screenPoint.x);
-
-        /*if (mousePos.x < screenPoint.x) {
+        
+        
+        /* Outra opção para linha anterior
+        if (mousePos.x < screenPoint.x) {
             sprite.flipY = true;
         else 
             sprite.flipY = false;*/
@@ -46,6 +49,7 @@ public class BowController : MonoBehaviour
 
     void Shoot() 
     {
+        // Atirar a flecha
         if (Input.GetButtonDown("Fire1")) 
         {
             Instantiate(arrow, arrowSpawn.position, transform.rotation);
