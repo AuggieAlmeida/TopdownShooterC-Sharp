@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Colisão para destruir inimigo quando acertado por flecha
         if (collision.CompareTag("Hit")) {
             anim.SetTrigger("Dead");
             isAlive = false;
